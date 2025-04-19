@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+
+# TypeScript build output
+/dist/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Tests
+/test/
+
+# Documentation files you don't want to include
+README.md
+LICENSE
+
+# Environment configuration files (can be ignored if you don't want them included)
+.env
+.env.local

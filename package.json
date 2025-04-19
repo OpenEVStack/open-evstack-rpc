@@ -28,12 +28,16 @@
   ],
   "author": "OpenEVStack",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "dotenv": "^16.5.0",
     "express": "^5.1.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.1",
-    "nodemon": "^3.1.9"
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2"
   }
 }
