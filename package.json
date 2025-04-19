@@ -1,0 +1,39 @@
+{
+  "name": "open-evstack-rpc",
+  "version": "1.0.0",
+  "description": "⚡ A lightweight, production-ready RPC server built with Express and WebSocket for handling OCPP-based EV charger communication. Part of the OpenEVStack ecosystem.",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenEVStack/open-evstack-rpc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/OpenEVStack/open-evstack-rpc/issues"
+  },
+  "homepage": "https://github.com/OpenEVStack/open-evstack-rpc#readme",
+  "keywords": [
+    "ocpp",
+    "rpc",
+    "ev-charging",
+    "evstack",
+    "open-evstack",
+    "ocpp-rpc",
+    "websocket",
+    "chargepoint"
+  ],
+  "author": "OpenEVStack",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "nodemon": "^3.1.9"
+  }
+}
