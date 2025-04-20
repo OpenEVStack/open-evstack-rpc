@@ -4,7 +4,7 @@
   "description": "⚡ A lightweight, production-ready RPC server built with Express and WebSocket for handling OCPP-based EV charger communication. Part of the OpenEVStack ecosystem.",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build",
     "publish": "",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",

@@ -1,6 +1,6 @@
 import EventBuffer from "../utils/event-buffer";
 import WebSocket from "ws";
-import { ClientOptions } from "./Options.interface";
+import { ClientOptions, IClose } from "./Options.interface";
 import { IncomingMessage } from "http";
 
 export interface IRpcClient {
@@ -35,15 +35,6 @@ export interface ICallOptions {
   signal: any;
 }
 
-export interface IClose {
-  code: number;
-  reason: string;
-  awaitPending?: boolean;
-  force?: boolean;
-  options?: ICloseOptions;
-}
-
-export interface ICloseOptions {}
 
 export interface IPendingCall {
   resolve?: (...args: any[]) => void;

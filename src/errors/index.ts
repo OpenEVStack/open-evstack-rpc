@@ -86,7 +86,7 @@ class RPCFrameworkError extends RPCError {
 }
 
 class WebsocketUpgradeError extends Error {
-  private code: number;
+  public code: number;
 
   constructor(code: number, message: string) {
     super(message);

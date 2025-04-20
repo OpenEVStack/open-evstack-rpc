@@ -1,5 +1,5 @@
 import { EventEmitter, once } from "events";
-import { ClientOptions, WsOpts } from "./interfaces/Options.interface";
+import { ClientOptions, IClose, WsOpts } from "./interfaces/Options.interface";
 import { randomUUID } from "crypto";
 import { setTimeout } from "timers/promises";
 import WebSocket from "ws";
@@ -13,7 +13,6 @@ import {
 import EventBuffer from "./utils/event-buffer";
 import {
   ICallOptions,
-  IClose,
   IDisconnect,
   IPendingCall,
   IRpcClient,
@@ -31,42 +30,42 @@ import {
 } from "./errors";
 import { IncomingMessage } from "http";
 
-export class RPCClient extends EventEmitter implements IRpcClient {
-  private _options: ClientOptions;
-  private _identity: string | undefined;
-  private _connectionUrl: string | undefined;
-  private _wildcardHandler: Function | undefined;
-  private _handlers: Map<string, Function>;
-  private _state: number; // You can change this to an enum type like ConnectionState
-  private _callQueue: any; // Replace `any` with your Queue class type
+export class RpcClient extends EventEmitter implements IRpcClient {
+  public _options: ClientOptions;
+  public _identity: string | undefined;
+  public _connectionUrl: string | undefined;
+  public _wildcardHandler: Function | undefined;
+  public _handlers: Map<string, Function>;
+  public _state: number; // You can change this to an enum type like ConnectionState
+  public _callQueue: any; // Replace `any` with your Queue class type
 
-  private _ws: WebSocket | undefined;
-  private _wsAbortController: any;
-  private _keepAliveAbortController: any;
-  private _pendingPingResponse: boolean;
-  private _lastPingTime: number;
-  private _closePromise: any;
-  private protocol?: string;
-  private _protocolOptions: string[];
-  private _protocol: any;
-  private _strictProtocols: string[];
-  private _strictValidators: any;
+  public _ws: WebSocket | undefined;
+  public _wsAbortController: any;
+  public _keepAliveAbortController: any;
+  public _pendingPingResponse: boolean;
+  public _lastPingTime: number;
+  public _closePromise: any;
+  public protocol?: string;
+  public _protocolOptions: string[];
+  public _protocol: any;
+  public _strictProtocols: string[];
+  public _strictValidators: any;
 
-  private _pendingCalls: Map<string, any>;
-  private _pendingResponses: Map<string, any>;
-  private _outboundMsgBuffer: string[];
-  private _connectedOnce: boolean;
+  public _pendingCalls: Map<string, any>;
+  public _pendingResponses: Map<string, any>;
+  public _outboundMsgBuffer: string[];
+  public _connectedOnce: boolean;
 
-  private _backoffStrategy: any;
-  private _badMessagesCount: number;
-  private _reconnectAttempt: number;
+  public _backoffStrategy: any;
+  public _badMessagesCount: number;
+  public _reconnectAttempt: number;
 
-  private _connectPromise:
+  public _connectPromise:
     | Promise<{ response: IncomingMessage | undefined } | undefined>
     | undefined;
-  private _nextPingTimeout: any;
+  public _nextPingTimeout: any;
 
-  constructor() {
+  constructor(options: ClientOptions) {
     super();
 
     this._identity = undefined;
@@ -645,7 +644,7 @@ export class RPCClient extends EventEmitter implements IRpcClient {
 
   async _tryReconnect() {
     this._reconnectAttempt++;
-    if (this._reconnectAttempt > this._options.maxReconnects) {
+    if (this._reconnectAttempt > Number(this._options.maxReconnects)) {
       // give up
       this.close({ code: 1001, reason: "Giving up" });
     } else {
@@ -782,7 +781,7 @@ export class RPCClient extends EventEmitter implements IRpcClient {
       this._badMessagesCount = 0;
     } catch (error: any) {
       const shouldClose =
-        ++this._badMessagesCount > this._options.maxBadMessages;
+        ++this._badMessagesCount > Number(this._options.maxBadMessages);
 
       let response = null;
       let errorMessage = "";
