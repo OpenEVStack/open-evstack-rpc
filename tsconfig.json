@@ -3,14 +3,25 @@
     "target": "ES2019",                         // Modern JS output
     "module": "CommonJS",                       // Compatible with Node.js
     "declaration": true,                        // Generates .d.ts files for npm packages
-    "outDir": "dist",                           // Output folder for compiled JS
-    "rootDir": "src",                           // Source files live here
+    "outDir": "./dist",                           // Output folder for compiled JS
+    "rootDir": "./",                           // Source files live here
     "strict": true,                             // Enables strict type checking
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
     "esModuleInterop": true,                    // For importing commonjs modules
     "forceConsistentCasingInFileNames": true,   // Avoids case-related bugs
-    "skipLibCheck": true,
-    "resolveJsonModule": true                     // Speeds up build time
+    "skipLibCheck": true,                       // Speeds up build time
+    "resolveJsonModule": true,
+    "strictPropertyInitialization": false                    
   },
-  "include": ["src"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"]
 }

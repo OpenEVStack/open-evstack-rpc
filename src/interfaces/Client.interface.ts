@@ -18,7 +18,7 @@ export interface IRpcClient {
   _awaitUntilPendingSettled(): Promise<PromiseSettledResult<any>[]>;
   _handleDisconnect(payload: IDisconnect): void;
   _beginConnect(): void;
-  _onMessage(buffer: string | ArrayBuffer | Buffer<ArrayBufferLike>[]): void;
+  _onMessage(buffer: string | ArrayBuffer | Buffer[]): void;
   _onCall(msgId: string, method: string, params: string): Promise<void>;
   _onCallResult(msgId: string, result: string): void;
   _onCallError(
@@ -49,5 +49,5 @@ export interface IPendingCall {
 
 export interface IDisconnect {
   code: number;
-  reason: Buffer<ArrayBufferLike> | string;
+  reason: Buffer | string;
 }

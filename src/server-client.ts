@@ -26,7 +26,7 @@ export class RPCServerClient extends RpcClient {
     this._attachWebsocket(this._ws);
   }
 
-  public _attachWebsocket(ws: WebSocket): void {
+  public override _attachWebsocket(ws: WebSocket): void {
     this._ws = ws;
 
     ws.on("close", () => {
@@ -44,7 +44,7 @@ export class RPCServerClient extends RpcClient {
     return this._session;
   }
 
-  async connect(): Promise<
+  override async connect(): Promise<
     { response: IncomingMessage | undefined } | undefined
   > {
     throw new Error("Cannot connect from server to client");

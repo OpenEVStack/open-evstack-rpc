@@ -1,4 +1,4 @@
-import errors from "../errors";
+import * as errors from "../errors";
 import pkg from "../../package.json";
 
 // Define the error lookup type more strictly

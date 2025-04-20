@@ -65,7 +65,7 @@ export class RpcClient extends EventEmitter implements IRpcClient {
     | undefined;
   public _nextPingTimeout: any;
 
-  constructor(options: ClientOptions) {
+  constructor(_: ClientOptions) {
     super();
 
     this._identity = undefined;
@@ -418,7 +418,7 @@ export class RpcClient extends EventEmitter implements IRpcClient {
           .then(() => {
             pendingCall.reject(timeoutError);
           })
-          .catch((err) => {});
+          .catch(() => {});
       }
 
       this._pendingCalls.set(msgId, pendingCall);
@@ -550,8 +550,7 @@ export class RpcClient extends EventEmitter implements IRpcClient {
 
       if (this._options.password != null) {
         const usernameBuffer = Buffer.from(this._identity + ":");
-        let passwordBuffer: string | Buffer<ArrayBufferLike> =
-          this._options.password;
+        let passwordBuffer: string | Buffer = this._options.password;
         if (typeof passwordBuffer === "string") {
           passwordBuffer = Buffer.from(passwordBuffer, "utf8");
         }
@@ -681,7 +680,7 @@ export class RpcClient extends EventEmitter implements IRpcClient {
     }
   }
 
-  _onMessage(buffer: string | ArrayBuffer | Buffer<ArrayBufferLike>[]) {
+  _onMessage(buffer: string | ArrayBuffer | Buffer[]) {
     if (this._options.deferPingsOnActivity) {
       this._deferNextPing();
     }
@@ -883,15 +882,17 @@ export class RpcClient extends EventEmitter implements IRpcClient {
           }
 
           try {
-            reply(
-              await handler({
-                messageId: msgId,
-                method,
-                params,
-                signal: ac.signal,
-                reply,
-              })
-            );
+            if (typeof handler === "function") {
+              reply(
+                await handler({
+                  messageId: msgId,
+                  method,
+                  params,
+                  signal: ac.signal,
+                  reply,
+                })!
+              );
+            }
           } catch (err) {
             reply(err);
           }

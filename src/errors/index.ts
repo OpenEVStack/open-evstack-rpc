@@ -19,70 +19,70 @@ class RPCError extends Error {
   rpcErrorCode = "GenericError";
 }
 class RPCGenericError extends RPCError {
-  rpcErrorMessage = "";
-  rpcErrorCode = "GenericError";
+  override rpcErrorMessage = "";
+  override rpcErrorCode = "GenericError";
 }
 class RPCNotImplementedError extends RPCError {
-  rpcErrorMessage = "Requested method is not known";
-  rpcErrorCode = "NotImplemented";
+  override rpcErrorMessage = "Requested method is not known";
+  override rpcErrorCode = "NotImplemented";
 }
 class RPCNotSupportedError extends RPCError {
-  rpcErrorMessage = "Requested method is recognised but not supported";
-  rpcErrorCode = "NotSupported";
+  override rpcErrorMessage = "Requested method is recognised but not supported";
+  override rpcErrorCode = "NotSupported";
 }
 class RPCInternalError extends RPCError {
-  rpcErrorMessage =
+  override rpcErrorMessage =
     "An internal error occurred and the receiver was not able to process the requested method successfully";
-  rpcErrorCode = "InternalError";
+  override rpcErrorCode = "InternalError";
 }
 class RPCProtocolError extends RPCError {
-  rpcErrorMessage = "Payload for method is incomplete";
-  rpcErrorCode = "ProtocolError";
+  override rpcErrorMessage = "Payload for method is incomplete";
+  override rpcErrorCode = "ProtocolError";
 }
 class RPCSecurityError extends RPCError {
-  rpcErrorMessage =
+  override rpcErrorMessage =
     "During the processing of method a security issue occurred preventing receiver from completing the method successfully";
-  rpcErrorCode = "SecurityError";
+  override rpcErrorCode = "SecurityError";
 }
 class RPCFormatViolationError extends RPCError {
-  rpcErrorMessage =
+  override rpcErrorMessage =
     "Payload for the method is syntactically incorrect or not conform the PDU structure for the method";
-  rpcErrorCode = "FormatViolation";
+  override rpcErrorCode = "FormatViolation";
 }
 class RPCFormationViolationError extends RPCError {
-  rpcErrorMessage =
+  override rpcErrorMessage =
     "Payload for the method is syntactically incorrect or not conform the PDU structure for the method";
-  rpcErrorCode = "FormationViolation";
+  override rpcErrorCode = "FormationViolation";
 }
 class RPCPropertyConstraintViolationError extends RPCError {
-  rpcErrorMessage =
+  override rpcErrorMessage =
     "Payload is syntactically correct but at least one field contains an invalid value";
-  rpcErrorCode = "PropertyConstraintViolation";
+  override rpcErrorCode = "PropertyConstraintViolation";
 }
 class RPCOccurenceConstraintViolationError extends RPCError {
-  rpcErrorMessage =
+  override rpcErrorMessage =
     "Payload for the method is syntactically correct but at least one of the fields violates occurence constraints";
-  rpcErrorCode = "OccurenceConstraintViolation";
+  override rpcErrorCode = "OccurenceConstraintViolation";
 }
 class RPCOccurrenceConstraintViolationError extends RPCError {
-  rpcErrorMessage =
+  override rpcErrorMessage =
     "Payload for the method is syntactically correct but at least one of the fields violates occurence constraints";
-  rpcErrorCode = "OccurrenceConstraintViolation";
+  override rpcErrorCode = "OccurrenceConstraintViolation";
 }
 class RPCTypeConstraintViolationError extends RPCError {
-  rpcErrorMessage =
+  override rpcErrorMessage =
     "Payload for the method is syntactically correct but at least one of the fields violates data type constraints";
-  rpcErrorCode = "TypeConstraintViolation";
+  override rpcErrorCode = "TypeConstraintViolation";
 }
 class RPCMessageTypeNotSupportedError extends RPCError {
-  rpcErrorMessage =
+  override rpcErrorMessage =
     "A message with a Message Type Number received is not supported by this implementation.";
-  rpcErrorCode = "MessageTypeNotSupported";
+  override rpcErrorCode = "MessageTypeNotSupported";
 }
 class RPCFrameworkError extends RPCError {
-  rpcErrorMessage =
+  override rpcErrorMessage =
     "Content of the call is not a valid RPC Request, for example: MessageId could not be read.";
-  rpcErrorCode = "RpcFrameworkError";
+  override rpcErrorCode = "RpcFrameworkError";
 }
 
 class WebsocketUpgradeError extends Error {

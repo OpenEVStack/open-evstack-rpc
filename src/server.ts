@@ -12,7 +12,7 @@ import {
 } from "./interfaces/Options.interface";
 import { RPCServerClient } from "./server-client";
 import { AuthCallback } from "./types/types";
-import { IListenOptions, IRpcServer } from "./interfaces/server.interface";
+import { IListenOptions, IRpcServer } from "./interfaces/Server.interface";
 import { Socket } from "net";
 
 export class RpcServer extends EventEmitter implements IRpcServer {
@@ -315,7 +315,7 @@ export class RpcServer extends EventEmitter implements IRpcServer {
       {
         noDelay: true,
       },
-      (req, res) => {
+      (_, res) => {
         res.setHeader("Server", getPackageIdent());
         res.statusCode = 404;
         res.end();
