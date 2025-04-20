@@ -8,7 +8,8 @@
     "strict": true,                             // Enables strict type checking
     "esModuleInterop": true,                    // For importing commonjs modules
     "forceConsistentCasingInFileNames": true,   // Avoids case-related bugs
-    "skipLibCheck": true                        // Speeds up build time
+    "skipLibCheck": true,
+    "resolveJsonModule": true                     // Speeds up build time
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"]
