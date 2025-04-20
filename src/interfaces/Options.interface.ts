@@ -1,5 +1,6 @@
 import { WebSocket } from "ws";
 import { Validator } from "../utils/validator";
+import { Protocol } from "../enums/protocol.enum";
 
 export interface ClientOptions {
   identity?: string;
@@ -37,7 +38,7 @@ export interface WsOpts {
 
 export interface ServerOptions {
   wssOptions: WsOpts | {};
-  protocols: string[];
+  protocols: Protocol[];
   callTimeoutMs: number;
   pingIntervalMs: number;
   deferPingsOnActivity: boolean;
