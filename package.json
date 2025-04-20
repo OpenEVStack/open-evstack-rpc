@@ -1,5 +1,5 @@
 {
-  "name": "@openevstack/ocpp-rpc",
+  "name": "ev-rpc",
   "version": "1.0.5",
   "description": "⚡ A lightweight, production-ready RPC server built with Express and WebSocket for handling OCPP-based EV charger communication. Part of the OpenEVStack ecosystem.",
   "main": "./dist/index.js",
