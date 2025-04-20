@@ -30,7 +30,7 @@ import {
 } from "./errors";
 import { IncomingMessage } from "http";
 
-export class RpcClient extends EventEmitter implements IRpcClient {
+class RpcClient extends EventEmitter implements IRpcClient {
   public _options: ClientOptions;
   public _identity: string | undefined;
   public _connectionUrl: string | undefined;
@@ -64,6 +64,11 @@ export class RpcClient extends EventEmitter implements IRpcClient {
     | Promise<{ response: IncomingMessage | undefined } | undefined>
     | undefined;
   public _nextPingTimeout: any;
+
+  static OPEN = OPEN;
+  static CONNECTING = CONNECTING;
+  static CLOSING = CLOSING;
+  static CLOSED = CLOSED;
 
   constructor(_: ClientOptions) {
     super();
@@ -1044,3 +1049,10 @@ export class RpcClient extends EventEmitter implements IRpcClient {
     }
   }
 }
+
+RpcClient.OPEN = OPEN;
+RpcClient.CONNECTING = CONNECTING;
+RpcClient.CLOSING = CLOSING;
+RpcClient.CLOSED = CLOSED;
+
+export default RpcClient;

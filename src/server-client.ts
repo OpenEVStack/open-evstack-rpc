@@ -1,4 +1,4 @@
-import { RpcClient } from "./client";
+import RpcClient from "./client";
 import { OPEN, WebSocket } from "ws";
 import {
   ClientOptions,
